@@ -71,13 +71,13 @@ export class SodaProblem {
         capsLeft = 0
         bottlesLeft++
         this.DRANK++
-        console.info('[借]', '一个瓶盖')
+        console.info('[借]', '1×瓶盖')
       }
       if (bottlesLeft + 1 === this.PRICE.bottle) {
         bottlesLeft = 0
         capsLeft++
         this.DRANK++
-        console.info('[借]', '一个瓶身')
+        console.info('[借]', '1×瓶身')
       }
 
       this.CAPS = capsLeft
