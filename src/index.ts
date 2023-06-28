@@ -1,15 +1,16 @@
 import { SodaProblem } from './SodaProblem'
 
-const START = 10
-const PRICE = { cap: 2, bottle: 4 }
+const timeBegin = Date.now()
+const INIT_SODA = 10
+const PRICES = { cap: 2, bottle: 4 }
 console.info(`== 先决条件 ==
-最初持有：${10} 瓶苏打水
-兑换价格：${PRICE.cap}瓶盖/${PRICE.bottle}瓶身
+最初持有：${INIT_SODA} 瓶苏打水
+兑换价格：${PRICES.cap}瓶盖/${PRICES.bottle}瓶身
 `)
 
 const [noBorrow, borrowOne] = [
-  new SodaProblem(START, PRICE),
-  new SodaProblem(START, PRICE),
+  new SodaProblem(INIT_SODA, PRICES),
+  new SodaProblem(INIT_SODA, PRICES),
 ]
 console.info('**** 计算开始 ****')
 console.info('> 禁用赊账')
@@ -30,3 +31,5 @@ console.info(`
 - 共喝：${borrowOne.backpack.DRANK} 瓶苏打水
 - 剩余：${borrowOne.backpack.CAPS} 瓶盖 / ${borrowOne.backpack.BOTTLES} 瓶身
 `)
+
+console.info(`耗时 ${Date.now() - timeBegin}ms`)

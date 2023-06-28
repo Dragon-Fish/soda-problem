@@ -1,16 +1,12 @@
 export class SodaProblem {
-  private DRANK: number
-  private CAPS: number
-  private BOTTLES: number
+  private DRANK = 0
+  private CAPS = 0
+  private BOTTLES = 0
 
   constructor(
     private SODAS: number,
-    private PRICE: { cap: number; bottle: number }
-  ) {
-    this.CAPS = 0
-    this.BOTTLES = 0
-    this.DRANK = 0
-  }
+    private PRICES: { cap: number; bottle: number }
+  ) {}
 
   get backpack() {
     return {
@@ -36,13 +32,13 @@ export class SodaProblem {
   startWithoutBorrow() {
     this.SODAS > 0 && this.drinkAll()
 
-    while (this.CAPS >= this.PRICE.cap || this.BOTTLES >= this.PRICE.bottle) {
+    while (this.CAPS >= this.PRICES.cap || this.BOTTLES >= this.PRICES.bottle) {
       this.SODAS +=
-        Math.floor(this.CAPS / this.PRICE.cap) +
-        Math.floor(this.BOTTLES / this.PRICE.bottle)
+        Math.floor(this.CAPS / this.PRICES.cap) +
+        Math.floor(this.BOTTLES / this.PRICES.bottle)
 
-      let capsLeft = this.CAPS % this.PRICE.cap
-      let bottlesLeft = this.BOTTLES % this.PRICE.bottle
+      let capsLeft = this.CAPS % this.PRICES.cap
+      let bottlesLeft = this.BOTTLES % this.PRICES.bottle
 
       this.CAPS = capsLeft
       this.BOTTLES = bottlesLeft
@@ -57,23 +53,23 @@ export class SodaProblem {
     this.SODAS > 0 && this.drinkAll()
 
     while (
-      this.CAPS + 1 >= this.PRICE.cap ||
-      this.BOTTLES + 1 >= this.PRICE.bottle
+      this.CAPS + 1 >= this.PRICES.cap ||
+      this.BOTTLES + 1 >= this.PRICES.bottle
     ) {
       this.SODAS +=
-        Math.floor(this.CAPS / this.PRICE.cap) +
-        Math.floor(this.BOTTLES / this.PRICE.bottle)
+        Math.floor(this.CAPS / this.PRICES.cap) +
+        Math.floor(this.BOTTLES / this.PRICES.bottle)
 
-      let capsLeft = this.CAPS % this.PRICE.cap
-      let bottlesLeft = this.BOTTLES % this.PRICE.bottle
+      let capsLeft = this.CAPS % this.PRICES.cap
+      let bottlesLeft = this.BOTTLES % this.PRICES.bottle
 
-      if (capsLeft + 1 === this.PRICE.cap) {
+      if (capsLeft + 1 === this.PRICES.cap) {
         capsLeft = 0
         bottlesLeft++
         this.DRANK++
         console.info('[借]', '1×瓶盖')
       }
-      if (bottlesLeft + 1 === this.PRICE.bottle) {
+      if (bottlesLeft + 1 === this.PRICES.bottle) {
         bottlesLeft = 0
         capsLeft++
         this.DRANK++

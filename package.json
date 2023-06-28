@@ -1,8 +1,9 @@
 {
-  "name": "coke-problem",
+  "name": "soda-problem",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "tsx src/index.ts"
   },
@@ -10,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tsx": "^3.11.0",
-    "typescript": "^4.8.4"
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.5"
   }
 }
